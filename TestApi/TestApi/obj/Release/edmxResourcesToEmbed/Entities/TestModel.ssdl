@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище TestModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepartmentTitle" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employes">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="EmployeeSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmployeeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmployeePatronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubdivisionID" Type="int" />
+    <Property Name="DepartmentID" Type="int" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="GroupID" />
+    </Key>
+    <Property Name="GroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Requests">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestType" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+    <Property Name="RequestStartDate" Type="date" Nullable="false" />
+    <Property Name="RequestEndDate" Type="date" Nullable="false" />
+    <Property Name="RequestPurpouse" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmployeID" Type="int" Nullable="false" />
+    <Property Name="RequestStatus" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="RequestDescription" Type="nvarchar(max)" />
+    <Property Name="GroupID" Type="int" />
+  </EntityType>
+  <EntityType Name="Subdivisions">
+    <Key>
+      <PropertyRef Name="SubdivisionID" />
+    </Key>
+    <Property Name="SubdivisionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubdivisionTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Visitors">
+    <Key>
+      <PropertyRef Name="VisitorID" />
+    </Key>
+    <Property Name="VisitorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VisitorSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="VisitorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="VisitorPatronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="VisitorPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="VisitorEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="VisitorLogin" Type="nvarchar" MaxLength="50" />
+    <Property Name="VisitorPassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="VisitorOrganisation" Type="nvarchar" MaxLength="50" />
+    <Property Name="VisitorDateOfBirth" Type="date" />
+    <Property Name="VisitorDescription" Type="nvarchar(max)" />
+    <Property Name="VisitorSeriaPassport" Type="nvarchar" MaxLength="4" />
+    <Property Name="VisitorNumberPassport" Type="nvarchar" MaxLength="6" />
+    <Property Name="VisitorPhoto" Type="image" />
+    <Property Name="VisitorSkan" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="VisuitorsRequests">
+    <Key>
+      <PropertyRef Name="RequestsID" />
+      <PropertyRef Name="VisitorsID" />
+    </Key>
+    <Property Name="RequestsID" Type="int" Nullable="false" />
+    <Property Name="VisitorsID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Employes_Departments">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+    <End Role="Employes" Type="Self.Employes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="Employes">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employes_Subdivision">
+    <End Role="Subdivisions" Type="Self.Subdivisions" Multiplicity="0..1" />
+    <End Role="Employes" Type="Self.Employes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subdivisions">
+        <PropertyRef Name="SubdivisionID" />
+      </Principal>
+      <Dependent Role="Employes">
+        <PropertyRef Name="SubdivisionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requests_Employes">
+    <End Role="Employes" Type="Self.Employes" Multiplicity="1" />
+    <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employes">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="EmployeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requests_Groups">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="0..1" />
+    <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="GroupID" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VisuitorsRequests_Requests">
+    <End Role="Requests" Type="Self.Requests" Multiplicity="1" />
+    <End Role="VisuitorsRequests" Type="Self.VisuitorsRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Requests">
+        <PropertyRef Name="RequestID" />
+      </Principal>
+      <Dependent Role="VisuitorsRequests">
+        <PropertyRef Name="RequestsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VisuitorsRequests_Visitors">
+    <End Role="Visitors" Type="Self.Visitors" Multiplicity="1" />
+    <End Role="VisuitorsRequests" Type="Self.VisuitorsRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Visitors">
+        <PropertyRef Name="VisitorID" />
+      </Principal>
+      <Dependent Role="VisuitorsRequests">
+        <PropertyRef Name="VisitorsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище TestModelContainer">
+    <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employes" EntityType="Self.Employes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subdivisions" EntityType="Self.Subdivisions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Visitors" EntityType="Self.Visitors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VisuitorsRequests" EntityType="Self.VisuitorsRequests" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Employes_Departments" Association="Self.FK_Employes_Departments">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Employes" EntitySet="Employes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employes_Subdivision" Association="Self.FK_Employes_Subdivision">
+      <End Role="Subdivisions" EntitySet="Subdivisions" />
+      <End Role="Employes" EntitySet="Employes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requests_Employes" Association="Self.FK_Requests_Employes">
+      <End Role="Employes" EntitySet="Employes" />
+      <End Role="Requests" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requests_Groups" Association="Self.FK_Requests_Groups">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Requests" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VisuitorsRequests_Requests" Association="Self.FK_VisuitorsRequests_Requests">
+      <End Role="Requests" EntitySet="Requests" />
+      <End Role="VisuitorsRequests" EntitySet="VisuitorsRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VisuitorsRequests_Visitors" Association="Self.FK_VisuitorsRequests_Visitors">
+      <End Role="Visitors" EntitySet="Visitors" />
+      <End Role="VisuitorsRequests" EntitySet="VisuitorsRequests" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

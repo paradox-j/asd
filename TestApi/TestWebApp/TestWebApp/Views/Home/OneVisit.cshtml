@@ -1,0 +1,155 @@
+﻿
+@{
+	ViewBag.Title = "Индивидуальное посещение";
+}
+<form method="post" class="container-fluid d-flex h-100 justify-content-center align-items-center p-0">
+	<div class="container text-center p-0 m-0">
+		<div class="row">
+			<h3>Форма записи на посещение мероприятия</h3>
+		</div>
+		<div class="row">
+			<div class="col-md-auto bg-light m-3 p-0 pb-3 rounded-4">
+				<h4 class="bg-warning rounded-4 p-1">Информация для пропуска</h4>
+				<div class="container">
+					<h5>Срок действия заявки:</h5>
+					<div class="row px-2">
+						<div class="col "><h5>с*</h5></div>
+						<div class="col px-1"><input type="date" class="rounded-pill px-2"></div>
+						<div class="col pe-1"><h5>по</h5></div>
+						<div class="col"><input type="date" class="rounded-pill px-2"></div>
+					</div>
+					<h5>Цель посещения:</h5>
+					<select class="w-100" name="purpose">
+						<!-- <option value="rigatoni">Rigatoni</option>-->
+					</select>
+				</div>
+			</div>
+			<div class="col bg-light m-3 p-0 pb-3 rounded-4 text-start">
+				<h4 class="bg-warning rounded-4 p-1 text-center">Принимающая сторона</h4>
+				<div class="container">
+					<h5 class="ms-2">Подразделение*:</h5>
+					<select class="ms-2 w-100" name="subdivision">
+						<!-- <option value="rigatoni">Rigatoni</option>-->
+					</select>
+					<h5 class="ms-2">ФИО*:</h5>
+					<div class = "ms-2 row">
+						<select class="col" name="FIO"> 
+							<!-- <option value="rigatoni">Rigatoni</option>-->
+						</select>
+						<img class="col-md-auto" height="30" width="30" src="~/image/user.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col bg-light m-3 p-0 pb-3 rounded-4">
+				<h4 class="bg-warning rounded-4 p-1">Информация о посетителе</h4>
+				<div class="container text-start">
+					<div class="row">
+						<div class="col-8">
+							<div class="row my-3">
+								<div class="col">
+									<h5>Фамилия*:</h5>
+								</div>
+								<div class="col-3">
+									<input class="rounded-3" type="text">
+								</div>
+								<div class="col">
+									<h5>Организация:</h5>
+								</div>
+								<div class="col-3">
+									<input class="rounded-3" type="text">
+								</div>
+							</div>
+							<div class="row my-3">
+								<div class="col">
+									<h5>Имя*:</h5>
+								</div>
+								<div class="col-3">
+									<input class="rounded-3" type="text">
+								</div>
+								<div class="col">
+									<h5>Примечание:</h5>
+								</div>
+								<div class="col-3">
+									<input class="rounded-3" type="text">
+								</div>
+							</div>
+							<div class="row my-3">
+								<div class="col">
+									<h5>Отчество*:</h5>
+								</div>
+								<div class="col-3">
+									<input class="rounded-3" type="text">
+								</div>
+								<div class="col">
+									<h5>Дата рождения:</h5>
+								</div>
+								<div class="col-3">
+									<input class="rounded-3 w-100" type="date">
+								</div>
+							</div>
+							<div class="row my-3">
+								<div class="col">
+									<h5>Телефон:</h5>
+								</div>
+								<div class="col-3">
+									<input class="rounded-3" type="text">
+								</div>
+								<div class="col">
+									<h5>Серия:</h5>
+								</div>
+								<div class="col-3">
+									<input class="rounded-3" type="text">
+								</div>
+							</div>
+							<div class="row my-3">
+								<div class="col">
+									<h5>E-mail:</h5>
+								</div>
+								<div class="col-3">
+									<input class="rounded-3" type="text">
+								</div>
+								<div class="col">
+									<h5>Номер:</h5>
+								</div>
+								<div class="col-3">
+									<input class="rounded-3" type="text">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-4 ">
+							<div class="row justify-content-center">
+								<img class="w-50" src="~/image/user.png" />
+							</div>
+							<div class="row justify-content-center ">
+								<a class="btn btn-outline-warning btn-send w-50 m-1">Загрузить фото</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6 bg-light m-3 p-0 pb-3 rounded-4">
+				<h4 class="bg-warning rounded-4 p-1">Прикрепляемые документы</h4>
+				<div class="container text-start">
+					<div class="col-4 row justify-content-center align-items-center">
+						<label class="btn p-2" for="input__file"><img height="20" class="mb-1" src="~/image/download.png" />Прикрепить файл</label>
+						<input type="file" name="file" id="input__file" class="input input__file d-none">
+					</div>
+				</div>
+			</div>
+			<div class="col">
+			</div>
+			<div class="col-2 mt-5 p-0 rounded-4">
+				<button type="reset" class="btn btn-lg ">Очистить форму</button>
+			</div>
+			<div class="col-2 mt-5 p-0 rounded-4">
+				<button type="submit" class="btn btn-send btn-lg btn-outline-warning">Оформить заявку</button>
+			</div>
+		</div>
+	</div>
+</form>

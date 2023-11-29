@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Главная";
+}
+
+<div>
+    <div class="row text-center">
+        <div class="card col p-0 bg-light m-5 p-5 rounded-5">
+            <div class="bg-white">
+                <img src="~/image/one.png" height="250" alt="Индивидуальное посещение"/>
+            </div>
+            <a asp-controller="Home" asp-action="OneVisit" class="text-secondary mt-5 stretched-link">Личное посещение</a>
+        </div>
+        <div class="card col p-0 bg-light m-5 p-5 rounded-5">
+            <div class="bg-white">
+                <img src="~/image/group.png" height="250" alt="Групповое посещение" />
+            </div>
+            <a asp-controller="Home" asp-action="GroupVisit" class="text-secondary mt-5 stretched-link">Групповое посещение</a>
+        </div>
+    </div>
+</div>

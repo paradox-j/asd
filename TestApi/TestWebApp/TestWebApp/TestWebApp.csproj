@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\image\download.png" />
+    <Content Remove="wwwroot\image\group.png" />
+    <Content Remove="wwwroot\image\logo.png" />
+    <Content Remove="wwwroot\image\one.png" />
+    <Content Remove="wwwroot\image\user.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\TestApi\TestApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="wwwroot\image\download.png" />
+    <Resource Include="wwwroot\image\group.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="wwwroot\image\logo.png" />
+    <Resource Include="wwwroot\image\one.png" />
+    <Resource Include="wwwroot\image\user.png" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище TestModelContainer" CdmEntityContainer="TestEntities">
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="TestModel.Departments">
+        <MappingFragment StoreEntitySet="Departments">
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="DepartmentTitle" ColumnName="DepartmentTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employes">
+      <EntityTypeMapping TypeName="TestModel.Employes">
+        <MappingFragment StoreEntitySet="Employes">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="EmployeeSurname" ColumnName="EmployeeSurname" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="EmployeePatronymic" ColumnName="EmployeePatronymic" />
+          <ScalarProperty Name="SubdivisionID" ColumnName="SubdivisionID" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="TestModel.Groups">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="GroupTitle" ColumnName="GroupTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requests">
+      <EntityTypeMapping TypeName="TestModel.Requests">
+        <MappingFragment StoreEntitySet="Requests">
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="RequestStartDate" ColumnName="RequestStartDate" />
+          <ScalarProperty Name="RequestEndDate" ColumnName="RequestEndDate" />
+          <ScalarProperty Name="RequestPurpouse" ColumnName="RequestPurpouse" />
+          <ScalarProperty Name="EmployeID" ColumnName="EmployeID" />
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+          <ScalarProperty Name="RequestDescription" ColumnName="RequestDescription" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subdivisions">
+      <EntityTypeMapping TypeName="TestModel.Subdivisions">
+        <MappingFragment StoreEntitySet="Subdivisions">
+          <ScalarProperty Name="SubdivisionID" ColumnName="SubdivisionID" />
+          <ScalarProperty Name="SubdivisionTitle" ColumnName="SubdivisionTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Visitors">
+      <EntityTypeMapping TypeName="TestModel.Visitors">
+        <MappingFragment StoreEntitySet="Visitors">
+          <ScalarProperty Name="VisitorID" ColumnName="VisitorID" />
+          <ScalarProperty Name="VisitorSurname" ColumnName="VisitorSurname" />
+          <ScalarProperty Name="VisitorName" ColumnName="VisitorName" />
+          <ScalarProperty Name="VisitorPatronymic" ColumnName="VisitorPatronymic" />
+          <ScalarProperty Name="VisitorPhone" ColumnName="VisitorPhone" />
+          <ScalarProperty Name="VisitorEmail" ColumnName="VisitorEmail" />
+          <ScalarProperty Name="VisitorLogin" ColumnName="VisitorLogin" />
+          <ScalarProperty Name="VisitorPassword" ColumnName="VisitorPassword" />
+          <ScalarProperty Name="VisitorOrganisation" ColumnName="VisitorOrganisation" />
+          <ScalarProperty Name="VisitorDateOfBirth" ColumnName="VisitorDateOfBirth" />
+          <ScalarProperty Name="VisitorDescription" ColumnName="VisitorDescription" />
+          <ScalarProperty Name="VisitorSeriaPassport" ColumnName="VisitorSeriaPassport" />
+          <ScalarProperty Name="VisitorNumberPassport" ColumnName="VisitorNumberPassport" />
+          <ScalarProperty Name="VisitorPhoto" ColumnName="VisitorPhoto" />
+          <ScalarProperty Name="VisitorSkan" ColumnName="VisitorSkan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="VisuitorsRequests" TypeName="TestModel.VisuitorsRequests" StoreEntitySet="VisuitorsRequests">
+      <EndProperty Name="Requests">
+        <ScalarProperty Name="RequestID" ColumnName="RequestsID" />
+      </EndProperty>
+      <EndProperty Name="Visitors">
+        <ScalarProperty Name="VisitorID" ColumnName="VisitorsID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
